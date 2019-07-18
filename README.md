@@ -1,6 +1,8 @@
-## reddit html archiver
+## prawarchiver
 
-pulls reddit data from the [pushshift](https://github.com/pushshift/api) api and renders offline compatible html pages
+pulls data from the reddit api and renders offline compatible html pages
+
+this is a fork of [reddit-html-archiver](https://github.com/libertysoft3/reddit-html-archiver), but it uses the reddit api (praw) instead of pushshift.io api (psaw)
 
 ### install
 
@@ -21,18 +23,15 @@ Windows users may need to run
     chcp 65001
     set PYTHONIOENCODING=utf-8
 
-before running `fetch_links.py` or `write_html.py` to resolve encoding errors such as 'codec can't encode character'.
+before running `prawarchiver.py` or `write_html.py` to resolve encoding errors such as 'codec can't encode character'.
 
 ### fetch reddit data
 
 data is fetched by subreddit and date range and is stored as csv files in `data`.
 
-    ./fetch_links.py politics 2017-1-1 2017-2-1
-    # or add some link/post request filters
-    ./fetch_links.py --self_only --score "> 2000" politics 2015-1-1 2016-1-1
-    ./fetch_links.py -h
-
-you may need decrease your date range or adjust `pushshift_rate_limit_per_minute` in `fetch_links.py` if you are getting connection errors.
+    ./prawarchiver.py politics 2017-1-1 2017-2-1
+    
+**WARNING:** retrievable data is limited by reddit api to a max of 1000 posts
 
 ### write web pages
 
@@ -50,34 +49,6 @@ to update an html archive, delete everything in `r` aside from `r/static` and re
 ### hosting the archived pages
 
 copy the contents of the `r` directory to a web root or appropriately served git repo.
-
-### potential improvements
-
-* fetch_links
-  * num_comments filtering
-  * thumbnails or thumbnail urls
-  * media posts
-  * score update
-  * scores from reddit with [praw](https://github.com/praw-dev/praw)
-* real templating
-* choose [Bootswatch](https://bootswatch.com/) theme
-* specify subreddits to output
-* show link domain/post type
-* user pages
-  * add pagination, posts sorted by score, comments, date, sub
-  * too many files in one directory
-* view on reddit.com
-* js powered search page, show no links by default
-* js inline media embeds/expandos
-* archive.org links
-
-### see also
-
-* [pushshift](https://github.com/pushshift/api), [r/pushshift](https://www.reddit.com/r/pushshift/)
-* [psaw](https://github.com/dmarx/psaw)
-* [snudown](https://github.com/reddit/snudown)
-* [redditsearch.io](https://redditsearch.io/)
-* [reddit post archiver](https://github.com/sJohnsonStoever/redditPostArchiver)
 
 ### screenshots
 
