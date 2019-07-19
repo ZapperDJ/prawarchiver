@@ -1,12 +1,12 @@
-## prawarchiver
+## Prawarchiver
 
-pulls data from the reddit api and renders offline compatible html pages
+Pulls data from the reddit api and renders offline compatible html pages
 
-this is a fork of [reddit-html-archiver](https://github.com/libertysoft3/reddit-html-archiver), but it uses the reddit api (praw) instead of pushshift.io api (psaw)
+This is a fork of [reddit-html-archiver](https://github.com/libertysoft3/reddit-html-archiver), but it uses the reddit api (praw) instead of pushshift.io api (psaw)
 
-### install
+### Install
 
-requires python 3 on linux, OSX, or Windows
+Requires python 3 on linux, OSX, or Windows
 
     sudo apt-get install pip
     pip install psaw
@@ -25,30 +25,39 @@ Windows users may need to run
 
 before running `prawarchiver.py` or `write_html.py` to resolve encoding errors such as 'codec can't encode character'.
 
-### fetch reddit data
+A reddit api key is required to use prawarchiver. Create one here (script type) https://ssl.reddit.com/prefs/apps/ and fill this lines at the beginning whith your api keys
 
-data is fetched by subreddit and date range and is stored as csv files in `data`.
+    reddit = praw.Reddit(client_id='', \
+                     client_secret='', \
+                     user_agent='', \
+                     username='', \
+                     password='')
+              
+
+### Fetch reddit data
+
+Data is fetched by subreddit and date range and is stored as csv files in `data`.
 
     ./prawarchiver.py politics 2017-1-1 2017-2-1
     
-**WARNING:** retrievable data is limited by reddit api to a max of 1000 posts
+**WARNING:** Retrievable data is limited by reddit api to a max of 1000 posts
 
-### write web pages
+### Write web pages
 
-write html files for all subreddits to `r`.
+Write html files for all subreddits to `r`.
 
     ./write_html.py
     # or add some output filtering
     ./write_html.py --min-score 100 --min-comments 100 --hide-deleted-comments
     ./write_html.py -h
 
-your html archive has been written to `r`. once you are satisfied with your archive feel free to copy/move the contents of `r` to elsewhere and to delete the git repos you have created. everything in `r` is fully self contained.
+Your html archive has been written to `r`. Once you are satisfied with your archive feel free to copy/move the contents of `r` to elsewhere and to delete the git repos you have created. everything in `r` is fully self contained.
 
-to update an html archive, delete everything in `r` aside from `r/static` and re-run `write_html.py` to regenerate everything.
+To update an html archive, delete everything in `r` aside from `r/static` and re-run `write_html.py` to regenerate everything.
 
-### hosting the archived pages
+### Hosting the archived pages
 
-copy the contents of the `r` directory to a web root or appropriately served git repo.
+Copy the contents of the `r` directory to a web root or appropriately served git repo.
 
 ### screenshots
 
