@@ -9,13 +9,14 @@ This is a fork of [reddit-html-archiver](https://github.com/libertysoft3/reddit-
 Requires python 3 on linux, OSX, or Windows
 
     sudo apt-get install pip
-    pip install psaw
+    pip install praw
+    pip install pandas
     git clone https://github.com/chid/snudown
     cd snudown
     sudo python setup.py install
     cd ..
     git clone [this repo]
-    cd reddit-html-archiver
+    cd prawarchiver
     chmod u+x *.py
 
 Windows users may need to run
